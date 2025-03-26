@@ -1,4 +1,4 @@
-import { fetchAllPosts } from "@/services/posts";
+import { deletePost, fetchAllPosts } from "@/services/posts";
 import { Post } from "@/types";
 import { FC, useEffect, useState } from "react";
 import { PostsPage } from "./PostsPage";
@@ -23,9 +23,25 @@ export const PostsPageProvider: FC = () => {
     getPosts();
   }, []);
 
+  const handleRemovePost = async (postId: number) => {
+    setLoading(true);
+    const res = await deletePost(postId);
+    if (res?.status !== 200) {
+      // Show user a toast message
+      // E.g. Sorry, there was a problem deleting the post, please try again
+    }
+    setLoading(false);
+  };
+
   return (
     <>
-      {loading ? <Loading /> : error ? <Error /> : <PostsPage posts={posts} />}
+      {loading ? (
+        <Loading />
+      ) : error ? (
+        <Error />
+      ) : (
+        <PostsPage posts={posts} removePost={handleRemovePost} />
+      )}
     </>
   );
 };

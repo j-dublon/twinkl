@@ -7,13 +7,23 @@ describe("Helper: mockFetch", () => {
     vi.clearAllMocks();
   });
 
-  it("SHOULD mock fetch and return data WEHN invoked ", async () => {
+  it("SHOULD mock fetch and return data WHEN invoked with no method", async () => {
     mockFetch(mockPosts);
 
     const response = await fetch("https://example.com/posts");
     const posts = await response.json();
 
     expect(posts).toEqual(mockPosts);
+    expect(global.fetch).toHaveBeenCalledTimes(1);
+  });
+
+  it("SHOULD mock fetch and return status 200 WHEN invoked with no data and method DELETE", async () => {
+    mockFetch(undefined, "DELETE");
+
+    const response = await fetch("https://example.com/posts/1", {
+      method: "DELETE",
+    });
+    expect(response.status).toBe(200);
     expect(global.fetch).toHaveBeenCalledTimes(1);
   });
 });

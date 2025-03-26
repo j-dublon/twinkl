@@ -13,3 +13,18 @@ export const fetchAllPosts = async (): Promise<Post[] | null> => {
     return null;
   }
 };
+
+export const deletePost = async (postId: number) => {
+  try {
+    const res = await fetch(
+      `https://jsonplaceholder.typicode.com/posts/${postId}`,
+      {
+        method: "DELETE",
+      },
+    );
+    return { status: res.status };
+  } catch (error) {
+    console.log("Error deleting post: ", error);
+    return { status: 500 };
+  }
+};

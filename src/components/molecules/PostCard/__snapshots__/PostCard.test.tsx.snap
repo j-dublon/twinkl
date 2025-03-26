@@ -7,9 +7,33 @@ exports[`Component: PostCard > SHOULD match snapshot 1`] = `
     <div>
       <div
         aria-label="Post content"
-        class="m-4 pb-1 focus:outline-none focus:ring-2 focus:ring-blue-500 border-b-1 border-b-zinc-300"
+        class="m-4 pb-1 focus:outline-none focus:ring-2 focus:ring-blue-500 border-b-1 border-b-zinc-300 flex flex-row justify-between items-center"
         tabindex="0"
       >
+        <div>
+          <h1>
+            A great post
+          </h1>
+          <p>
+            Some information about this post
+          </p>
+        </div>
+        <button
+          aria-label="Remove A great post post"
+          class="text-xl text-red-600 hover:text-red-900 ml-16"
+        >
+          X
+        </button>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      aria-label="Post content"
+      class="m-4 pb-1 focus:outline-none focus:ring-2 focus:ring-blue-500 border-b-1 border-b-zinc-300 flex flex-row justify-between items-center"
+      tabindex="0"
+    >
+      <div>
         <h1>
           A great post
         </h1>
@@ -17,20 +41,12 @@ exports[`Component: PostCard > SHOULD match snapshot 1`] = `
           Some information about this post
         </p>
       </div>
-    </div>
-  </body>,
-  "container": <div>
-    <div
-      aria-label="Post content"
-      class="m-4 pb-1 focus:outline-none focus:ring-2 focus:ring-blue-500 border-b-1 border-b-zinc-300"
-      tabindex="0"
-    >
-      <h1>
-        A great post
-      </h1>
-      <p>
-        Some information about this post
-      </p>
+      <button
+        aria-label="Remove A great post post"
+        class="text-xl text-red-600 hover:text-red-900 ml-16"
+      >
+        X
+      </button>
     </div>
   </div>,
   "debug": [Function],

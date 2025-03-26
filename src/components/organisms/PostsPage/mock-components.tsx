@@ -7,8 +7,8 @@ export const MockPostsList: FC<PostListProps> = () => (
 
 export const MockEmptyList: FC = () => <div>Mock Empty List</div>;
 
-export const MockPostsPage: FC<PostPageProps> = () => (
-  <div>Mock Posts Page</div>
+export const MockPostsPage: FC<PostPageProps> = ({ removePost }) => (
+  <div onClick={() => removePost(1)}>Mock Posts Page</div>
 );
 
 export const MockError: FC = () => <div>Error!</div>;
