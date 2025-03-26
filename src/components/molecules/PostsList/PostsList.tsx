@@ -2,10 +2,10 @@ import { PostListProps } from "@/types";
 import { FC } from "react";
 import { PostCard } from "../PostCard/PostCard";
 
-export const PostsList: FC<PostListProps> = ({ posts }) => (
+export const PostsList: FC<PostListProps> = ({ posts, removePost }) => (
   <>
     {posts.map((post) => (
-      <PostCard post={post} key={post.id} />
+      <PostCard post={post} removePost={removePost} key={post.id} />
     ))}
   </>
 );

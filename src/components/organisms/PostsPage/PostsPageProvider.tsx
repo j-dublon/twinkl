@@ -23,9 +23,17 @@ export const PostsPageProvider: FC = () => {
     getPosts();
   }, []);
 
+  const handleRemovePost = () => {};
+
   return (
     <>
-      {loading ? <Loading /> : error ? <Error /> : <PostsPage posts={posts} />}
+      {loading ? (
+        <Loading />
+      ) : error ? (
+        <Error />
+      ) : (
+        <PostsPage posts={posts} removePost={handleRemovePost} />
+      )}
     </>
   );
 };
