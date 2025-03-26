@@ -12,22 +12,23 @@ export const PostsPageProvider: FC = () => {
   const [inputValue, setInputValue] = useState("");
   const [searchTerm] = useDebounce(inputValue, 1000);
 
+  const getPosts = async (query?: string) => {
+    setLoading(true);
+    const posts = await fetchAllPosts(query);
+    if (!posts) {
+      setError(true);
+    } else {
+      setPosts(posts);
+    }
+    setLoading(false);
+  };
+
   useEffect(() => {
-    const getPosts = async () => {
-      setLoading(true);
-      const posts = await fetchAllPosts();
-      if (!posts) {
-        setError(true);
-      } else {
-        setPosts(posts);
-      }
-      setLoading(false);
-    };
     getPosts();
   }, []);
 
   useEffect(() => {
-    console.log(searchTerm, "<---QUERY");
+    getPosts(searchTerm);
   }, [searchTerm]);
 
   const handleRemovePost = async (postId: number) => {

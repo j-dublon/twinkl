@@ -1,5 +1,3 @@
-import { ChangeEventHandler } from "react";
-
 export type Post = {
   id: number;
   title: string;
