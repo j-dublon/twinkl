@@ -26,7 +26,7 @@ export const PostsPageProvider: FC = () => {
   const handleRemovePost = async (postId: number) => {
     setLoading(true);
     const res = await deletePost(postId);
-    if (res.status !== 200) {
+    if (res?.status !== 200) {
       // Show user a toast message
       // E.g. Sorry, there was a problem deleting the post, please try again
     }
