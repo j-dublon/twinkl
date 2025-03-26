@@ -2,17 +2,22 @@ import { fetchAllPosts } from "@/services/posts";
 import { Post } from "@/types";
 import { FC, useEffect, useState } from "react";
 import { PostsPage } from "./PostsPage";
-import { Loading } from "@/components/atoms";
+import { Error, Loading } from "@/components";
 
 export const PostsPageProvider: FC = () => {
   const [loading, setLoading] = useState(false);
-  const [posts, setPosts] = useState<Post[] | null>();
+  const [error, setError] = useState(false);
+  const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
     const getPosts = async () => {
       setLoading(true);
       const posts = await fetchAllPosts();
-      setPosts(posts);
+      if (!posts) {
+        setError(true);
+      } else {
+        setPosts(posts);
+      }
       setLoading(false);
     };
     getPosts();
@@ -20,8 +25,7 @@ export const PostsPageProvider: FC = () => {
 
   return (
     <>
-      {loading && <Loading />}
-      {posts && <PostsPage posts={posts} />}
+      {loading ? <Loading /> : error ? <Error /> : <PostsPage posts={posts} />}
     </>
   );
 };
