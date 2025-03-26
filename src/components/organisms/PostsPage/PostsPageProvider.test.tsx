@@ -1,5 +1,5 @@
-import { vi } from "vitest";
-import { render, waitFor } from "@testing-library/react";
+import { Mock, vi } from "vitest";
+import { fireEvent, render, waitFor } from "@testing-library/react";
 import { PostsPageProvider } from "./PostsPageProvider";
 import { MockError, MockPostsPage } from "./mock-components";
 import { PostPageProps } from "@/types";
@@ -10,8 +10,11 @@ vi.mock("../../atoms/Error/Error", () => ({
   Error: () => <MockError />,
 }));
 
+const mockRemovePost: Mock = vi.fn();
 vi.mock("./PostsPage", () => ({
-  PostsPage: (props: PostPageProps) => <MockPostsPage {...props} />,
+  PostsPage: (props: PostPageProps) => (
+    <MockPostsPage posts={props.posts} removePost={mockRemovePost} />
+  ),
 }));
 
 describe("Component: PostsPageProvider", () => {
@@ -44,5 +47,16 @@ describe("Component: PostsPageProvider", () => {
       expect(queryByText("Loading...")).toBeNull();
     });
     expect(getByText("Error!"));
+  });
+
+  it("SHOULD call delete post service WHEN child component calls handleRemovePost", async () => {
+    mockFetch(mockPosts);
+    mockFetch(undefined, "DELETE");
+    const { getByText, queryByText } = render(<PostsPageProvider />);
+    await waitFor(() => {
+      expect(queryByText("Loading...")).toBeNull();
+    });
+    fireEvent.click(getByText("Mock Posts Page"));
+    expect(mockRemovePost).toHaveBeenCalledWith(1);
   });
 });

@@ -19,3 +19,5 @@ export type PostCardProps = {
   post: Post;
   removePost: (id: number) => void;
 };
+
+export type Fetch = "DELETE";

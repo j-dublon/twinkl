@@ -1,12 +1,19 @@
+import { Fetch } from "@/types";
 import { Mock } from "vitest";
 
-export const mockFetch = (data?: any) => {
-  global.fetch = vi.fn(() =>
-    Promise.resolve({
+export const mockFetch = (data?: any, method?: Fetch) => {
+  global.fetch = vi.fn(() => {
+    if (method === "DELETE") {
+      return Promise.resolve({
+        json: () => Promise.resolve({}),
+        status: 200,
+      });
+    }
+    return Promise.resolve({
       json: () => Promise.resolve(data),
       status: 200,
-    })
-  ) as Mock;
+    });
+  }) as Mock;
 };
 
 export const mockFetchError = () => {
