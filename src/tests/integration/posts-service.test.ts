@@ -12,7 +12,7 @@ describe("Service: fetchAllPosts", () => {
 
     const res = await fetchAllPosts();
     expect(fetch).toHaveBeenCalledWith(
-      "https://jsonplaceholder.typicode.com/posts"
+      "https://jsonplaceholder.typicode.com/posts",
     );
     expect(res).toEqual(mockPosts);
   });
