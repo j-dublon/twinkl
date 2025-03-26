@@ -19,7 +19,7 @@ describe("Component: PostsPage", () => {
     expect(component).toMatchSnapshot();
   });
 
-  it.only("SHOULD render the PostsList component WHEN posts are available", () => {
+  it("SHOULD render the PostsList component WHEN posts are available", () => {
     const { getByText } = render(<PostsPage posts={mockPosts} />);
     expect(getByText("Mock Posts List"));
   });

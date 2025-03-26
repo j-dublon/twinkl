@@ -1,4 +1,4 @@
-import { PostListProps } from "@/types";
+import { PostListProps, PostPageProps } from "@/types";
 import { FC } from "react";
 
 export const MockPostsList: FC<PostListProps> = () => (
@@ -6,3 +6,9 @@ export const MockPostsList: FC<PostListProps> = () => (
 );
 
 export const MockEmptyList: FC = () => <div>Mock Empty List</div>;
+
+export const MockPostsPage: FC<PostPageProps> = () => (
+  <div>Mock Posts Page</div>
+);
+
+export const MockError: FC = () => <div>Error!</div>;

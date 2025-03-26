@@ -1,18 +1,22 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Component: PostsPage > SHOULD match snapshot 1`] = `
+exports[`Component: PostsPageProvider > SHOULD match snapshot 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <div>
-        Mock Posts List
+      <div
+        role="status"
+      >
+        Loading...
       </div>
     </div>
   </body>,
   "container": <div>
-    <div>
-      Mock Posts List
+    <div
+      role="status"
+    >
+      Loading...
     </div>
   </div>,
   "debug": [Function],
