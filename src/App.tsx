@@ -1,9 +1,7 @@
+import { PostsPageProvider } from "./components";
+
 const App = () => {
-  return (
-      <div>
-          <h1>Hello Twinkl!</h1>
-      </div>
-  )
-}
+  return <PostsPageProvider />;
+};
 
 export default App;

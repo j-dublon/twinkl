@@ -4,3 +4,7 @@ export type Post = {
   body: string;
   userId: number;
 };
+
+export type PostPageProps = {
+  posts: Post[];
+};
