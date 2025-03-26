@@ -1,5 +1,5 @@
 import { fetchAllPosts } from "../../services/posts";
-import { mockPostsResponse } from "./fixtures";
+import { mockPosts } from "../mockData";
 import { mockFetch, mockFetchError } from "../helpers";
 
 describe("Service: fetchAllPosts", () => {
@@ -8,13 +8,13 @@ describe("Service: fetchAllPosts", () => {
   });
 
   it("SHOULD call the correct API route WHEN invoked", async () => {
-    mockFetch(mockPostsResponse);
+    mockFetch(mockPosts);
 
     const res = await fetchAllPosts();
     expect(fetch).toHaveBeenCalledWith(
       "https://jsonplaceholder.typicode.com/posts"
     );
-    expect(res).toEqual(mockPostsResponse);
+    expect(res).toEqual(mockPosts);
   });
 
   it("SHOULD return null WHEN an error occurs", async () => {

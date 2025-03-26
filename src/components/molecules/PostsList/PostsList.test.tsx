@@ -1,16 +1,12 @@
 import { render } from "@testing-library/react";
 import { PostsList } from "./PostsList";
-import { mockPosts } from "./fixtures";
+import { mockPosts } from "@/tests/mockData";
 import { MockPostCard } from "./mock-components";
 import { PostCardProps } from "@/types";
 
-vi.mock("../../molecules/ProductsList/ProductsList", async (importOriginal) => {
-  const actual = await importOriginal();
-  return {
-    ...(actual as Record<string, any>),
-    default: (props: PostCardProps) => <MockPostCard {...props} />,
-  };
-});
+vi.mock("../PostCard/PostCard", () => ({
+  PostCard: (props: PostCardProps) => <MockPostCard {...props} />,
+}));
 
 describe("Component: PostsList", () => {
   it("SHOULD match snapshot", () => {

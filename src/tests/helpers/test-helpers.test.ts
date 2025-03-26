@@ -1,5 +1,5 @@
 import { fetchAllPosts } from "../../services/posts";
-import { mockPosts } from "./fixtures";
+import { mockPosts } from "../mockData";
 import { mockFetch, mockFetchError } from "../helpers";
 
 describe("Helper: mockFetch", () => {
