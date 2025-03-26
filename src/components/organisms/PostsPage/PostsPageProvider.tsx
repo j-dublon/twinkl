@@ -2,12 +2,15 @@ import { deletePost, fetchAllPosts } from "@/services/posts";
 import { Post } from "@/types";
 import { FC, useEffect, useState } from "react";
 import { PostsPage } from "./PostsPage";
-import { Error, Loading } from "../../atoms";
+import { Error, Loading, SearchInput } from "../../atoms";
+import { useDebounce } from "use-debounce";
 
 export const PostsPageProvider: FC = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [posts, setPosts] = useState<Post[]>([]);
+  const [inputValue, setInputValue] = useState("");
+  const [searchTerm] = useDebounce(inputValue, 1000);
 
   useEffect(() => {
     const getPosts = async () => {
@@ -23,6 +26,10 @@ export const PostsPageProvider: FC = () => {
     getPosts();
   }, []);
 
+  useEffect(() => {
+    console.log(searchTerm, "<---QUERY");
+  }, [searchTerm]);
+
   const handleRemovePost = async (postId: number) => {
     setLoading(true);
     const res = await deletePost(postId);
@@ -33,6 +40,10 @@ export const PostsPageProvider: FC = () => {
     setLoading(false);
   };
 
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  };
+
   return (
     <>
       {loading ? (
@@ -40,7 +51,10 @@ export const PostsPageProvider: FC = () => {
       ) : error ? (
         <Error />
       ) : (
-        <PostsPage posts={posts} removePost={handleRemovePost} />
+        <>
+          <SearchInput onChange={handleSearch} value={inputValue} />
+          <PostsPage posts={posts} removePost={handleRemovePost} />
+        </>
       )}
     </>
   );

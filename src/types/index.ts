@@ -1,3 +1,5 @@
+import { ChangeEventHandler } from "react";
+
 export type Post = {
   id: number;
   title: string;
@@ -21,3 +23,8 @@ export type PostCardProps = {
 };
 
 export type Fetch = "DELETE";
+
+export type SearchInputProps = {
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+};
