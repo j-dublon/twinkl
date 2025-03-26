@@ -19,10 +19,13 @@ describe("Component: PostsPageProvider", () => {
     vi.clearAllMocks();
   });
 
-  it("SHOULD match snapshot", () => {
+  it("SHOULD match snapshot", async () => {
     mockFetch(mockPosts);
     const component = render(<PostsPageProvider />);
-    expect(component).toMatchSnapshot();
+
+    await waitFor(() => {
+      expect(component).toMatchSnapshot();
+    });
   });
 
   it("SHOULD render the PostsPage component WHEN posts are available", async () => {

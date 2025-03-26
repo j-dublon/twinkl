@@ -1,4 +1,4 @@
-import { fetchAllPosts } from "../../services/posts";
+import { deletePost, fetchAllPosts } from "../../services/posts";
 import { mockPosts } from "../mockData";
 import { mockFetch, mockFetchError } from "../helpers";
 
@@ -12,7 +12,7 @@ describe("Service: fetchAllPosts", () => {
 
     const res = await fetchAllPosts();
     expect(fetch).toHaveBeenCalledWith(
-      "https://jsonplaceholder.typicode.com/posts",
+      "https://jsonplaceholder.typicode.com/posts"
     );
     expect(res).toEqual(mockPosts);
   });
@@ -22,5 +22,31 @@ describe("Service: fetchAllPosts", () => {
 
     const res = await fetchAllPosts();
     expect(res).toBeNull();
+  });
+});
+
+describe("Service: deletePost", () => {
+  afterEach(() => {
+    vi.clearAllMocks();
+  });
+
+  it("SHOULD call the correct API route WHEN invoked", async () => {
+    mockFetch();
+    const mockId: number = 1;
+
+    const res = await deletePost(mockId);
+    expect(fetch).toHaveBeenCalledWith(
+      `https://jsonplaceholder.typicode.com/posts/${mockId}`,
+      { method: "DELETE" }
+    );
+    expect(res).toEqual({ status: 200 });
+  });
+
+  it("SHOULD return null WHEN an error occurs", async () => {
+    mockFetchError();
+    const mockId: number = 1;
+
+    const res = await deletePost(mockId);
+    expect(res).toEqual({ status: 500 });
   });
 });
