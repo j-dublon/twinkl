@@ -18,4 +18,4 @@ The data provider pattern was chosen for this project. By creating dedicated dat
 
 #### Component-Specific State (local state management)
 
-This is a simple implementation and quite easy to understand, but it only suitable for small apps with simple components and data needs. It does not scale well, causes tighter coupling between components and data-fetching logic, and makes it impossibel to test the UI layer in isolation. It makes the app harder to maintain and debug in the long run.
+This is a simple implementation and quite easy to understand, but it is only suitable for small apps with simple components and data needs. It does not scale well, causes tighter coupling between components and data-fetching logic, and makes it impossible to test the UI layer in isolation. It makes the app harder to maintain and debug in the long run.

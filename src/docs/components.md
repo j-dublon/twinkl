@@ -1,6 +1,6 @@
 # Components
 
-This project uses a component architecture based on Atomic Design principles, which break down the user interface into smaller, reusable building blocks. The structure is organised into three primary categories: Atoms, Molecules, and Organisms. Additionally, a Data Provider structure is used to handle data-fetching logic separately from the components.
+This project uses a component architecture based on Atomic Design principles, which break down the user interface into smaller, reusable building blocks. The structure is organised into three primary categories: Atoms, Molecules, and Organisms. Additionally, a Data Provider structure is used to handle data-fetching logic separately from the UI components.
 
 ### Atoms
 
@@ -12,7 +12,7 @@ Molecules are combinations of atoms that form more complex UI elements. They may
 
 ### Organisms
 
-Organisms are more complex components that are made up of multiple molecules and atoms. This project stores both the Page-level organisms (e.g. [PostsPage](../components/organisms/PostsPage/PostsPage.tsx)) and it's data provider (e.g. [PostsPageProvider](../components/organisms/PostsPage/PostsPageProvider.tsx)) in this folder.
+Organisms are more complex components that are made up of multiple molecules and atoms. This project stores both the page-level organisms (e.g. [PostsPage](../components/organisms/PostsPage/PostsPage.tsx)) and their data providers (e.g. [PostsPageProvider](../components/organisms/PostsPage/PostsPageProvider.tsx)) in this folder.
 
 ### Data Providers
 

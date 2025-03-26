@@ -18,7 +18,7 @@ Tailwind CSS has been chosen as the styling framework for the project. Tailwind 
 
 #### Bootstrap
 
-A widely used CSS framework that offers pre-designed components and grid systems. It promotes a consistent design language, but it can be restrictive and may lead to a "generic" look if not customized extensively.
+A widely used CSS framework that offers pre-designed components and grid systems. It promotes a consistent design language, but it can be restrictive and also may include lots of unused styles in production builds.
 
 #### Vanilla CSS
 
