@@ -18,21 +18,21 @@ const mockRemovePost: Mock = vi.fn();
 describe("Component: PostsPage", () => {
   it("SHOULD match snapshot", () => {
     const component = render(
-      <PostsPage posts={mockPosts} removePost={mockRemovePost} />
+      <PostsPage posts={mockPosts} removePost={mockRemovePost} />,
     );
     expect(component).toMatchSnapshot();
   });
 
   it("SHOULD render the PostsList component WHEN posts are available", () => {
     const { getByText } = render(
-      <PostsPage posts={mockPosts} removePost={mockRemovePost} />
+      <PostsPage posts={mockPosts} removePost={mockRemovePost} />,
     );
     expect(getByText("Mock Posts List"));
   });
 
   it("SHOULD render the EmptyList component WHEN posts are not available", () => {
     const { getByText } = render(
-      <PostsPage posts={[]} removePost={mockRemovePost} />
+      <PostsPage posts={[]} removePost={mockRemovePost} />,
     );
     expect(getByText("Mock Empty List"));
   });

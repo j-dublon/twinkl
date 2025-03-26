@@ -18,6 +18,6 @@ export const mockFetch = (data?: any, method?: Fetch) => {
 
 export const mockFetchError = () => {
   global.fetch = vi.fn(() =>
-    Promise.reject(new Error("Deliberate test error!"))
+    Promise.reject(new Error("Deliberate test error!")),
   ) as Mock;
 };

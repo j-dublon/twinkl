@@ -14,14 +14,14 @@ const mockRemovePost: Mock = vi.fn();
 describe("Component: PostsList", () => {
   it("SHOULD match snapshot", () => {
     const component = render(
-      <PostsList posts={mockPosts} removePost={mockRemovePost} />
+      <PostsList posts={mockPosts} removePost={mockRemovePost} />,
     );
     expect(component).toMatchSnapshot();
   });
 
   it("SHOULD render a PostCard component for each post WHEN props are provided", () => {
     const { getByText } = render(
-      <PostsList posts={mockPosts} removePost={mockRemovePost} />
+      <PostsList posts={mockPosts} removePost={mockRemovePost} />,
     );
     mockPosts.forEach((post) => {
       expect(getByText(post.title));

@@ -3,7 +3,7 @@ import { Post } from "@/types";
 export const fetchAllPosts = async (): Promise<Post[] | null> => {
   try {
     const postsResponse = await fetch(
-      "https://jsonplaceholder.typicode.com/posts"
+      "https://jsonplaceholder.typicode.com/posts",
     );
     const posts = await postsResponse.json();
 
@@ -20,7 +20,7 @@ export const deletePost = async (postId: number) => {
       `https://jsonplaceholder.typicode.com/posts/${postId}`,
       {
         method: "DELETE",
-      }
+      },
     );
     return { status: res.status };
   } catch (error) {
