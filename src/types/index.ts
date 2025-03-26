@@ -8,3 +8,11 @@ export type Post = {
 export type PostPageProps = {
   posts: Post[];
 };
+
+export type PostListProps = {
+  posts: Post[];
+};
+
+export type PostCardProps = {
+  post: Post;
+};
