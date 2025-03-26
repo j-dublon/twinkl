@@ -3,6 +3,10 @@ import { mockPosts } from "./fixtures";
 import { mockFetch, mockFetchError } from "../helpers";
 
 describe("Helper: mockFetch", () => {
+  afterEach(() => {
+    vi.clearAllMocks();
+  });
+
   it("SHOULD mock fetch and return data WEHN invoked ", async () => {
     mockFetch(mockPosts);
 
@@ -14,7 +18,7 @@ describe("Helper: mockFetch", () => {
   });
 });
 
-describe.only("Helper: mockFetchError", () => {
+describe("Helper: mockFetchError", () => {
   it("SHOULD return null WHEN an error occurs", async () => {
     mockFetchError();
 

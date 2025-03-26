@@ -3,6 +3,10 @@ import { mockPostsResponse } from "./fixtures";
 import { mockFetch, mockFetchError } from "../helpers";
 
 describe("Service: fetchAllPosts", () => {
+  afterEach(() => {
+    vi.clearAllMocks();
+  });
+
   it("SHOULD call the correct API route WHEN invoked", async () => {
     mockFetch(mockPostsResponse);
 
