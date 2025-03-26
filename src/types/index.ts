@@ -24,5 +24,5 @@ export type Fetch = "DELETE";
 
 export type SearchInputProps = {
   value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (val: string) => void;
 };

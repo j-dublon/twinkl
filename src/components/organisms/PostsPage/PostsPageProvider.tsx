@@ -41,10 +41,6 @@ export const PostsPageProvider: FC = () => {
     setLoading(false);
   };
 
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
-  };
-
   return (
     <>
       {loading ? (
@@ -53,7 +49,10 @@ export const PostsPageProvider: FC = () => {
         <Error />
       ) : (
         <>
-          <SearchInput onChange={handleSearch} value={inputValue} />
+          <SearchInput
+            onChange={(val) => setInputValue(val)}
+            value={inputValue}
+          />
           <PostsPage posts={posts} removePost={handleRemovePost} />
         </>
       )}

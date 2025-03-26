@@ -5,7 +5,9 @@ export const SearchInput: FC<SearchInputProps> = ({ value, onChange }) => {
   return (
     <input
       placeholder="Search..."
-      onChange={onChange}
+      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+        onChange(e.target.value)
+      }
       value={value}
       type="search"
     />
