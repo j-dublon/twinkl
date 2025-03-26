@@ -4,7 +4,7 @@ This project uses [vitest](https://vitest.dev/) and [React Testing Library](http
 
 ### Test files
 
-Test files for components have been co-located with the components themselves. Mock test data that is relevant only to one component is colocated with the component in a `fixtures.ts` file. Mock test data relevant to multiple test files is stored in the [mockData](src/tests/mockData/index.ts) file.
+Test files for components have been co-located with the components themselves. Mock test data that is relevant only to one component is colocated with the component in a `fixtures.ts` file. Mock test data relevant to multiple test files is stored in the [mockData](../tests/mockData/index.ts) file.
 
 ### Component mocking
 
