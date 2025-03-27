@@ -11,7 +11,9 @@ exports[`Component: PostCard > SHOULD match snapshot 1`] = `
         tabindex="0"
       >
         <div>
-          <h1>
+          <h1
+            class="font-bold"
+          >
             A great post
           </h1>
           <p>
@@ -34,7 +36,9 @@ exports[`Component: PostCard > SHOULD match snapshot 1`] = `
       tabindex="0"
     >
       <div>
-        <h1>
+        <h1
+          class="font-bold"
+        >
           A great post
         </h1>
         <p>

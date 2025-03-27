@@ -43,9 +43,7 @@ export const PostsPageProvider: FC = () => {
 
   return (
     <>
-      {loading ? (
-        <Loading />
-      ) : error ? (
+      {error ? (
         <Error />
       ) : (
         <>
@@ -53,7 +51,11 @@ export const PostsPageProvider: FC = () => {
             onChange={(val) => setInputValue(val)}
             value={inputValue}
           />
-          <PostsPage posts={posts} removePost={handleRemovePost} />
+          {loading ? (
+            <Loading />
+          ) : (
+            <PostsPage posts={posts} removePost={handleRemovePost} />
+          )}
         </>
       )}
     </>
