@@ -5,6 +5,25 @@ exports[`Component: PostsList > SHOULD match snapshot 1`] = `
   "asFragment": [Function],
   "baseElement": <body>
     <div>
+      <div
+        class="sm:w-70/100 lg:w-60/100 m-auto"
+      >
+        <div>
+          sunt aut facere repellat provident occaecati excepturi optio reprehenderit
+        </div>
+        <div>
+          qui est esse
+        </div>
+        <div>
+          ea molestias quasi exercitationem repellat qui ipsa sit aut
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="sm:w-70/100 lg:w-60/100 m-auto"
+    >
       <div>
         sunt aut facere repellat provident occaecati excepturi optio reprehenderit
       </div>
@@ -14,17 +33,6 @@ exports[`Component: PostsList > SHOULD match snapshot 1`] = `
       <div>
         ea molestias quasi exercitationem repellat qui ipsa sit aut
       </div>
-    </div>
-  </body>,
-  "container": <div>
-    <div>
-      sunt aut facere repellat provident occaecati excepturi optio reprehenderit
-    </div>
-    <div>
-      qui est esse
-    </div>
-    <div>
-      ea molestias quasi exercitationem repellat qui ipsa sit aut
     </div>
   </div>,
   "debug": [Function],
