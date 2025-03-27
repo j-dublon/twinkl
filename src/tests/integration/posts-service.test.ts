@@ -12,7 +12,7 @@ describe("Service: fetchAllPosts", () => {
 
     const res = await fetchAllPosts();
     expect(fetch).toHaveBeenCalledWith(
-      "https://jsonplaceholder.typicode.com/posts"
+      "https://jsonplaceholder.typicode.com/posts",
     );
     expect(res).toEqual(mockPosts);
   });
@@ -23,7 +23,7 @@ describe("Service: fetchAllPosts", () => {
 
     const res = await fetchAllPosts(mockTitleQuery);
     expect(fetch).toHaveBeenCalledWith(
-      `https://jsonplaceholder.typicode.com/posts?title_like=${mockTitleQuery}`
+      `https://jsonplaceholder.typicode.com/posts?title_like=${mockTitleQuery}`,
     );
     expect(res).toEqual(mockPosts);
   });
@@ -48,7 +48,7 @@ describe("Service: deletePost", () => {
     const res = await deletePost(mockId);
     expect(fetch).toHaveBeenCalledWith(
       `https://jsonplaceholder.typicode.com/posts/${mockId}`,
-      { method: "DELETE" }
+      { method: "DELETE" },
     );
     expect(res).toEqual({ status: 200 });
   });

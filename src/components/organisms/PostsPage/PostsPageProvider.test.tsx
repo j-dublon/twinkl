@@ -86,7 +86,7 @@ describe("Component: PostsPageProvider", () => {
       () => {
         expect(fetchAllPosts).toHaveBeenCalledWith("Mock");
       },
-      { timeout: 2000 }
+      { timeout: 2000 },
     );
   });
 });

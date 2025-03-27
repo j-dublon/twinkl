@@ -19,7 +19,7 @@ export const deletePost = async (postId: number) => {
       `https://jsonplaceholder.typicode.com/posts/${postId}`,
       {
         method: "DELETE",
-      }
+      },
     );
     return { status: res.status };
   } catch (error) {
