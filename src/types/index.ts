@@ -21,3 +21,8 @@ export type PostCardProps = {
 };
 
 export type Fetch = "DELETE";
+
+export type SearchInputProps = {
+  value: string;
+  onChange: (val: string) => void;
+};

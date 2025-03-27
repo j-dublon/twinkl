@@ -1,56 +1,32 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Component: PostCard > SHOULD match snapshot 1`] = `
+exports[`Component: SearchInput > SHOULD match snapshot 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
       <div
-        aria-label="Post content"
-        class="m-4 pb-1 focus:outline-none focus:ring-2 focus:ring-blue-500 border-b-1 border-b-zinc-300 flex flex-row justify-between items-center"
-        tabindex="0"
+        class="bg-zinc-100 py-2 sm:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
       >
-        <div>
-          <h1
-            class="font-bold"
-          >
-            A great post
-          </h1>
-          <p>
-            Some information about this post
-          </p>
-        </div>
-        <button
-          aria-label="Remove A great post post"
-          class="text-xl text-red-600 hover:text-red-900 ml-16"
-        >
-          X
-        </button>
+        <input
+          class="block m-auto bg-white sm:bg-zinc-100 p-2 rounded-sm w-90/100 sm:w-40/100 lg:w-30/100"
+          placeholder="Search..."
+          type="search"
+          value=""
+        />
       </div>
     </div>
   </body>,
   "container": <div>
     <div
-      aria-label="Post content"
-      class="m-4 pb-1 focus:outline-none focus:ring-2 focus:ring-blue-500 border-b-1 border-b-zinc-300 flex flex-row justify-between items-center"
-      tabindex="0"
+      class="bg-zinc-100 py-2 sm:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
     >
-      <div>
-        <h1
-          class="font-bold"
-        >
-          A great post
-        </h1>
-        <p>
-          Some information about this post
-        </p>
-      </div>
-      <button
-        aria-label="Remove A great post post"
-        class="text-xl text-red-600 hover:text-red-900 ml-16"
-      >
-        X
-      </button>
+      <input
+        class="block m-auto bg-white sm:bg-zinc-100 p-2 rounded-sm w-90/100 sm:w-40/100 lg:w-30/100"
+        placeholder="Search..."
+        type="search"
+        value=""
+      />
     </div>
   </div>,
   "debug": [Function],

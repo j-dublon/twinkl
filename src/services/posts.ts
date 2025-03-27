@@ -1,10 +1,9 @@
 import { Post } from "@/types";
 
-export const fetchAllPosts = async (): Promise<Post[] | null> => {
+export const fetchAllPosts = async (title?: string): Promise<Post[] | null> => {
   try {
-    const postsResponse = await fetch(
-      "https://jsonplaceholder.typicode.com/posts",
-    );
+    const fetchUrl = `https://jsonplaceholder.typicode.com/posts${title ? `?title_like=${title}` : ""}`;
+    const postsResponse = await fetch(fetchUrl);
     const posts = await postsResponse.json();
 
     return posts;

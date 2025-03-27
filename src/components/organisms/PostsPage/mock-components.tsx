@@ -1,4 +1,4 @@
-import { PostListProps, PostPageProps } from "@/types";
+import { PostListProps, PostPageProps, SearchInputProps } from "@/types";
 import { FC } from "react";
 
 export const MockPostsList: FC<PostListProps> = () => (
@@ -12,3 +12,7 @@ export const MockPostsPage: FC<PostPageProps> = ({ removePost }) => (
 );
 
 export const MockError: FC = () => <div>Error!</div>;
+
+export const MockSearchInput: FC<SearchInputProps> = ({ onChange }) => (
+  <div onClick={() => onChange("Mock")}>Mock Search Input</div>
+);

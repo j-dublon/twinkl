@@ -1,13 +1,10 @@
 import { vi } from "vitest";
 import { fireEvent, render, waitFor } from "@testing-library/react";
 import { PostsPageProvider } from "./PostsPageProvider";
-import { MockError, MockPostsPage } from "./mock-components";
-import { PostPageProps } from "@/types";
-import { mockFetch, mockFetchError } from "@/tests/helpers";
+import { MockError, MockPostsPage, MockSearchInput } from "./mock-components";
+import { PostPageProps, SearchInputProps } from "@/types";
+import { deletePost, fetchAllPosts } from "@/services/posts";
 import { mockPosts } from "@/tests/mockData";
-const { mockDeletePost } = await vi.hoisted(
-  async () => await import("./fixtures")
-);
 
 vi.mock("../../atoms/Error/Error", () => ({
   Error: () => <MockError />,
@@ -15,11 +12,15 @@ vi.mock("../../atoms/Error/Error", () => ({
 vi.mock("./PostsPage", () => ({
   PostsPage: (props: PostPageProps) => <MockPostsPage {...props} />,
 }));
+vi.mock("../../atoms/SearchInput/SearchInput", () => ({
+  SearchInput: (props: SearchInputProps) => <MockSearchInput {...props} />,
+}));
 vi.mock("../../../services/posts", async (importOriginal: any) => {
   const mod = await importOriginal();
   return {
     ...mod,
-    deletePost: mockDeletePost,
+    deletePost: vi.fn(),
+    fetchAllPosts: vi.fn(),
   };
 });
 
@@ -29,7 +30,7 @@ describe("Component: PostsPageProvider", () => {
   });
 
   it("SHOULD match snapshot", async () => {
-    mockFetch(mockPosts);
+    vi.mocked(fetchAllPosts).mockResolvedValue(mockPosts);
 
     const component = render(<PostsPageProvider />);
     await waitFor(() => {
@@ -38,7 +39,7 @@ describe("Component: PostsPageProvider", () => {
   });
 
   it("SHOULD render the PostsPage component WHEN posts are available", async () => {
-    mockFetch(mockPosts);
+    vi.mocked(fetchAllPosts).mockResolvedValue(mockPosts);
 
     const { getByText, queryByText } = render(<PostsPageProvider />);
     await waitFor(() => {
@@ -48,7 +49,7 @@ describe("Component: PostsPageProvider", () => {
   });
 
   it("SHOULD render the Error component WHEN postsResponse is null", async () => {
-    mockFetchError();
+    vi.mocked(fetchAllPosts).mockResolvedValue(null);
 
     const { getByText, queryByText } = render(<PostsPageProvider />);
     await waitFor(() => {
@@ -58,8 +59,8 @@ describe("Component: PostsPageProvider", () => {
   });
 
   it("SHOULD call deletePost service WHEN child component calls handleRemovePost", async () => {
-    mockFetch(mockPosts);
-    mockFetch(undefined, "DELETE");
+    vi.mocked(fetchAllPosts).mockResolvedValue(mockPosts);
+    vi.mocked(deletePost).mockResolvedValue({ status: 200 });
 
     const { getByText, queryByText } = render(<PostsPageProvider />);
     await waitFor(() => {
@@ -68,7 +69,24 @@ describe("Component: PostsPageProvider", () => {
 
     fireEvent.click(getByText("Mock Posts Page"));
     await waitFor(() => {
-      expect(mockDeletePost).toHaveBeenCalledWith(1);
+      expect(deletePost).toHaveBeenCalledWith(1);
     });
+  });
+
+  it("SHOULD call fetchAllPosts service with search term WHEN SearchInput child component updates inputValue", async () => {
+    vi.mocked(fetchAllPosts).mockResolvedValue(mockPosts);
+
+    const { getByText, queryByText } = render(<PostsPageProvider />);
+    await waitFor(() => {
+      expect(queryByText("Loading...")).toBeNull();
+    });
+
+    fireEvent.click(getByText("Mock Search Input"));
+    await waitFor(
+      () => {
+        expect(fetchAllPosts).toHaveBeenCalledWith("Mock");
+      },
+      { timeout: 2000 },
+    );
   });
 });

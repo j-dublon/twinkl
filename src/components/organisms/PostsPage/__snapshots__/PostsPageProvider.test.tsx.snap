@@ -5,7 +5,11 @@ exports[`Component: PostsPageProvider > SHOULD match snapshot 1`] = `
   "asFragment": [Function],
   "baseElement": <body>
     <div>
+      <div>
+        Mock Search Input
+      </div>
       <div
+        class="text-center mt-8"
         role="status"
       >
         Loading...
@@ -13,7 +17,11 @@ exports[`Component: PostsPageProvider > SHOULD match snapshot 1`] = `
     </div>
   </body>,
   "container": <div>
+    <div>
+      Mock Search Input
+    </div>
     <div
+      class="text-center mt-8"
       role="status"
     >
       Loading...

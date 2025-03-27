@@ -7,12 +7,23 @@ describe("Service: fetchAllPosts", () => {
     vi.clearAllMocks();
   });
 
-  it("SHOULD call the correct API route WHEN invoked", async () => {
+  it("SHOULD call the correct API route WHEN invoked with no title query", async () => {
     mockFetch(mockPosts);
 
     const res = await fetchAllPosts();
     expect(fetch).toHaveBeenCalledWith(
       "https://jsonplaceholder.typicode.com/posts",
+    );
+    expect(res).toEqual(mockPosts);
+  });
+
+  it("SHOULD call the correct API route WHEN invoked with a title query", async () => {
+    mockFetch(mockPosts);
+    const mockTitleQuery: string = "Something";
+
+    const res = await fetchAllPosts(mockTitleQuery);
+    expect(fetch).toHaveBeenCalledWith(
+      `https://jsonplaceholder.typicode.com/posts?title_like=${mockTitleQuery}`,
     );
     expect(res).toEqual(mockPosts);
   });

@@ -6,6 +6,7 @@ exports[`Component: Loading > SHOULD match snapshot 1`] = `
   "baseElement": <body>
     <div>
       <div
+        class="text-center mt-8"
         role="status"
       >
         Loading...
@@ -14,6 +15,7 @@ exports[`Component: Loading > SHOULD match snapshot 1`] = `
   </body>,
   "container": <div>
     <div
+      class="text-center mt-8"
       role="status"
     >
       Loading...

@@ -8,7 +8,7 @@ export const PostCard: FC<PostCardProps> = ({ post, removePost }) => (
     aria-label="Post content"
   >
     <div>
-      <h1>{post.title}</h1>
+      <h1 className="font-bold">{post.title}</h1>
       <p>{post.body}</p>
     </div>
     <button
