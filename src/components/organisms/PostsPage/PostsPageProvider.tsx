@@ -1,6 +1,6 @@
 import { deletePost, fetchAllPosts } from "@/services/posts";
 import { Post } from "@/types";
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import { PostsPage } from "./PostsPage";
 import { Error, Loading, SearchInput } from "../../atoms";
 import { useDebounce } from "use-debounce";
@@ -11,6 +11,7 @@ export const PostsPageProvider: FC = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [inputValue, setInputValue] = useState("");
   const [searchTerm] = useDebounce(inputValue, 1000);
+  const prevSearchTermRef = useRef<string>("");
 
   const getPosts = async (query?: string) => {
     setLoading(true);
@@ -28,7 +29,10 @@ export const PostsPageProvider: FC = () => {
   }, []);
 
   useEffect(() => {
-    getPosts(searchTerm);
+    if (searchTerm !== prevSearchTermRef.current) {
+      getPosts(searchTerm);
+      prevSearchTermRef.current = searchTerm;
+    }
   }, [searchTerm]);
 
   const handleRemovePost = async (postId: number) => {
