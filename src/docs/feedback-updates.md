@@ -29,3 +29,7 @@ I have updated it so that it compares the searchTerm value to a previous value h
     }
   }, [searchTerm]);
 ```
+
+#### Deleting a post triggers an API call, but not reflected in the DOM
+
+As I mentioned in the [services.md](./services.md) file, the deletePost service has no effect on the UI, because the endpoint does not actually delete a post when a request is made to delete a post - it simply returns a 200 status code. I have added a client-side filter of the posts currently held in state to remove the deleted item, so this change is now reflected in the UI. The post returns once the page is refreshed however, as the item still exists on the back end.

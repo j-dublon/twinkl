@@ -42,6 +42,9 @@ export const PostsPageProvider: FC = () => {
       // Show user a toast message
       // E.g. Sorry, there was a problem deleting the post, please try again
     }
+    // TEMPORARILY remove deleted post - will come back when page refreshed!
+    const newPosts = posts.filter((post) => post.id !== postId);
+    setPosts(newPosts);
     setLoading(false);
   };
 
