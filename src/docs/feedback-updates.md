@@ -48,4 +48,10 @@ Keeping the tests isolated from one another helps to debug unexpected changes. F
 
 **2. Services were mocked as functions rather than promises:**
 
-?
+I'm not sure I understand this feedback - the implementation I have used:
+
+`vi.mocked(fetchAllPosts).mockResolvedValue(mockPosts);`
+
+is a shorthand for:
+
+`vi.mocked(fetchAllPosts).mockImplementation(() => Promise.resolve(mockPosts));`
